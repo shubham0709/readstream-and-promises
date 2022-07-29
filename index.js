@@ -20,12 +20,10 @@ const server = http.createServer((req, res) => {
         }
         case "/textstream": {
             var readstream = fs.createReadStream("./info.txt");
-            readstream.on('open', () => {
-                readstream.pipe(res);
-            })
-            readstream.on('error', (err) => {
-                res.end(err);
-            })
+            readstream.pipe(res);
+            // readstream.on('error', (err) => {
+            //     res.end(err);
+            // })
             break;
         }
         case "/textpromise": {
